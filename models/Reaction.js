@@ -1,6 +1,6 @@
 const { Schema, model, Types } = require('mongoose');
 
-const Reaction = new Schema (
+const ReactionSchema = new Schema (
     {
         reactionId: {
             
@@ -8,7 +8,7 @@ const Reaction = new Schema (
         reactionBody: {
             type: String,
             required: true,
-            
+
         },
         username: {
             type: String,
@@ -25,4 +25,8 @@ const Reaction = new Schema (
           getters: true
         }
     }
-)
+);
+
+const Reaction = model('Reaction', ReactionSchema);
+
+module.exports = Reaction;
