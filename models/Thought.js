@@ -17,7 +17,36 @@ const ThoughtSchema = new Schema (
             type: String,
             required: 'Please enter username.'
         },
-        reactions: []
+        // reactions are like replies in pizza-hunt
+        reactions: [ReactionSchema]
+    },
+    {
+        toJSON: {
+          getters: true,
+          virtuals: true
+        }
+    }
+);
+
+const ReactionSchema = new Schema (
+    {
+        reactionId: {
+            
+        },
+        reactionBody: {
+            type: String,
+            required: true,
+
+        },
+        username: {
+            type: String,
+            required: 'Please enter username.'
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: createdAtVal => dateFormat(createdAtVal)
+        }
     },
     {
         toJSON: {
@@ -25,6 +54,10 @@ const ThoughtSchema = new Schema (
         }
     }
 );
+
+ThoughtSchema.virtual('reactionCount').get(function() {
+    return this.reactions.length;
+});
 
 const Thought = model('Thought', ThoughtSchema);
 
