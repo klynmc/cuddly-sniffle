@@ -34,7 +34,8 @@ const ThoughtSchema = new Schema (
         thoughtText: {
             type: String,
             required: 'Share your thoughts with us.',
-
+            //must be within 1-280 characters in length
+            validate: [({ length }) => length >= 1 || length <= 280, 'Thoughts should be between 1-280 characters.']
         },
         createdAt: {
             type: Date,

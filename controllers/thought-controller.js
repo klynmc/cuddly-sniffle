@@ -44,7 +44,7 @@ const thoughtApi = {
          .then(dbUserData => res.json(dbUserData))
          .catch(err => res.json(err))
     },
-    removeComment({ params }, res) {
+    removeThought({ params }, res) {
         Thought.findOneAndDelete({ _id: params.thoughtId})
          .then(deletedThought => {
              if (!deletedThought) {
