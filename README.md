@@ -8,6 +8,12 @@ An API for social networks using Mongoose which allows users to share their thou
 * Mongoose
 * Express
 
+## Instructions
+* install Insomnia to your computer
+* install Mongoose via Terminal
+* install Express via Terminal
+* run "npm start" or "node server.js" to start the application
+
 ## WalkThrough Video
 
 ## Contribution
