@@ -15,15 +15,15 @@ const UserSchema = new Schema (
             match: [/.+@.+\..+/, 'Please enter a valid email address.']
         },
 
-        friends: [/* {
+        friends: [{
             type: Schema.Types.ObjectId,
             ref: 'User'
-        } */],
+        }],
 
-        thoughts: [/* {
+        thoughts: [{
             type: Schema.Types.ObjectId,
             ref: 'Thought'
-        } */]
+        }]
         
         },
     {
@@ -39,9 +39,9 @@ UserSchema.virtual('friendCount').get(function() {
     return this.friends.length;
 });
 
-UserSchema.virtual('thoughtCount').get(function() {
+/* UserSchema.virtual('thoughtCount').get(function() {
     return this.thoughts.length;
-});
+}); */
 
 const User = model('User', UserSchema);
 

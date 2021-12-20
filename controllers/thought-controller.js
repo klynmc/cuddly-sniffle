@@ -85,7 +85,7 @@ const thoughtApi = {
     getAllThoughts(req, res) {
         Thought.find({})
         .populate({
-        path: 'thoughts',
+        path: 'reactions',
         select: '-__v'
     })
     .select('-__v')
