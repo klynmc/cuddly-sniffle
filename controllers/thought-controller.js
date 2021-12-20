@@ -89,7 +89,7 @@ const thoughtApi = {
         select: '-__v'
     })
     .select('-__v')
-    /* .sort({ _id: -1 }) */
+    .sort({ _id: -1 })
     .then(dbThoughtData => res.json(dbThoughtData))
       .catch(err => {
         console.log(err);
@@ -104,7 +104,7 @@ getThoughtById({ params }, res) {
         select: '-__v'
       })
       .select('-__v')
-      /* .sort({ _id: -1 }) */
+      .sort({ _id: -1 })
       .then(dbThoughtData => {
         if (!dbThoughtData) {
           res.status(404).json({ message: 'No thought found with this id!' });
@@ -150,8 +150,8 @@ getThoughtById({ params }, res) {
     },
     addReaction ({ params, body }, res) {
         Thought.findOneAndUpdate(
-            { _id: params.id },
-            { $push: { thoughts: body }},
+            { _id: params.thoughtId },
+            { $push: { reactions: body }},
             { new: true, runValidators: true }
         )
          .then(dbThoughtData => {
@@ -163,10 +163,10 @@ getThoughtById({ params }, res) {
          })
          .catch(err => res.json(err));
     },
-    removeReaction ({ params, body }) {
+    removeReaction ({ params }, res) {
         Thought.findOneAndUpdate(
-            { _id: params.id },
-            { $pull: { thoughts: { reactionId: params.reactionId } } },
+            { _id: params.thoughtId },
+            { $pull: { reactions: { reactionId: params.reactionId } } },
             {new: true}
         )
          .then(dbThoughtData => res.json(dbThoughtData))
