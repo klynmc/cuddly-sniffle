@@ -15,6 +15,7 @@ An API for social networks using Mongoose which allows users to share their thou
 * run "npm start" or "node server.js" to start the application
 
 ## WalkThrough Video
+https://watch.screencastify.com/v/n6qzSfoLSjaQ3zQDQo8p
 
 ## Contribution
 Made by Leigha McKay
